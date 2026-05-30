@@ -1,14 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using System.Net.NetworkInformation;
+using WindowsOOBERecreation.Enums;
+using WindowsOOBERecreation.Interfaces;
 
 namespace WindowsOOBERecreation
 {
     public partial class Main : Form
     {
         private Panel mainPanel;
+        private readonly Stack<EOobePage> navigationStack = new Stack<EOobePage>();
+
         public string Username { get; set; }
         public string ComputerName { get; set; }
         public int PageNumber = 0;
@@ -33,18 +38,15 @@ namespace WindowsOOBERecreation
             imgBackHovered = LoadImage(Properties.Resources.backhovered);
             imgBackPressed = LoadImage(Properties.Resources.backpressed);
 
-            mainPanel = new Panel();
-            mainPanel.Dock = DockStyle.Fill;
-            this.TopMost = true;
-            this.Controls.Add(mainPanel);
+            mainPanel = new Panel {
+                Dock = DockStyle.Fill
+            };
 
-            LoadStartForm();
+            TopMost = true;
+            Controls.Add(mainPanel);
+
+            LoadPage(EOobePage.Start);
             EnablePictureBoxEvents();
-        }
-
-        private bool IsImageDisabled()
-        {
-            return backButtonPic.Tag?.ToString() == "backNotAllowed";
         }
 
         private Image LoadImage(byte[] data)
@@ -143,41 +145,72 @@ namespace WindowsOOBERecreation
             backButtonPic.MouseUp += BackButtonPic_MouseUp;
         }
 
-        public void HandleBackNav()
-        {
-            // buggy kinda, if you go for example:
-            // password -> security -> time date
-            // then go back to security and password and then go like that again up to time date
-            // it'll send you back to password instead of security, if you know to fix this please lmk!!
-            if (mainPanel.Controls[0] is Security securityForm)
+        public void LoadPage(EOobePage page, bool pushToStack = true) {
+            Form form;
+
+            switch (page) {
+                case EOobePage.Start:
+                    form = new Start(this);
+                    break;
+                case EOobePage.Password:
+                    form = new Password(this, Username, ComputerName);
+                    break;
+                case EOobePage.Security:
+                    form = new Security(this);
+                    break;
+                case EOobePage.TimeAndDate:
+                    form = new TimeAndDate(this);
+                    break;
+                case EOobePage.Network:
+                    form = new Network(this);
+                    break;
+                case EOobePage.ProductKey:
+                    form = new ProductKey(this);
+                    break;
+                case EOobePage.Finalizing:
+                    form = new Finalizing(this);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(page), page, null);
+            }
+
+            if (pushToStack) 
             {
+                navigationStack.Push(page);
+            }
+
+            LoadFormIntoPanel(form);
+        }
+
+        public void GoBack() {
+            if (navigationStack.Count <= 1) { return; }
+
+            navigationStack.Pop();
+
+            EOobePage previous = navigationStack.Peek();
+            LoadPage(previous, pushToStack: false);
+
+            if (previous == EOobePage.Password || previous == EOobePage.Start) {
                 buttonPanel.Visible = true;
                 nextButton.Visible = true;
-
-                LoadPasswordForm();
             }
-            else if (mainPanel.Controls[0] is TimeAndDate timeAndDateForm)
-            {
+            else if (previous == EOobePage.Security) {
+                buttonPanel.Visible = true;
+                nextButton.Visible = true;
+            }
+            else if (previous == EOobePage.TimeAndDate) {
                 buttonPanel.Visible = false;
                 nextButton.Visible = false;
-
-                LoadSecurityForm();
-            }
-            else if (mainPanel.Controls[0] is Network nwForm)
-            {
-                buttonPanel.Visible = true;
-                nextButton.Visible = true;
-
-                LoadTimeAndDateForm();
             }
         }
 
-        public void LoadFormIntoPanel(Form form)
-        {
-            foreach (Control c in mainPanel.Controls)
-            {
-                c.Dispose();
-            }
+        public void HandleBackNav() {
+            GoBack();
+        }
+
+        public void LoadFormIntoPanel(Form form) {
+            foreach (Control c in mainPanel.Controls) { c.Dispose(); }
+
             mainPanel.Controls.Clear();
 
             form.TopLevel = false;
@@ -188,96 +221,44 @@ namespace WindowsOOBERecreation
             form.Show();
         }
 
-        private void LoadStartForm()
-        {
-            Start startForm = new Start(this);
-            LoadFormIntoPanel(startForm);
-        }
+        private void nextButton_Click(object sender, EventArgs e) {
+            if (mainPanel.Controls[0] is not IOobePage page) { return; }
 
-        public void LoadPasswordForm()
-        {
-            Password passwordForm = new Password(this, Username, ComputerName);
-            LoadFormIntoPanel(passwordForm);
-        }
+            switch (page.Page) {
+                case EOobePage.Start:
+                    ((Start)page).MainBtnClick();
+                    LoadPage(EOobePage.Password);
+                    break;
+                case EOobePage.Password:
+                    ((Password)page).MainBtnClick();
 
-        public void LoadProductKeyForm()
-        {
-            ProductKey ProductKeyForm = new ProductKey(this);
-            LoadFormIntoPanel(ProductKeyForm);
-        }
+                    buttonPanel.Visible = false;
+                    nextButton.Visible = false;
 
-        private void LoadSecurityForm()
-        {
-            Security securityForm = new Security(this);
-            LoadFormIntoPanel(securityForm);
-        }
+                    LoadPage(EOobePage.Security);
+                    break;
+                case EOobePage.Security:
+                    // Do nothing, security handles it.
+                    break;
+                case EOobePage.TimeAndDate:
+                    buttonPanel.Visible = false;
+                    nextButton.Visible = false;
 
-        private void LoadTimeAndDateForm()
-        {
-            TimeAndDate timeAndDateForm = new TimeAndDate(this);
-            LoadFormIntoPanel(timeAndDateForm);
-        }
+                    bool wifiConnected = false;
 
-        private void LoadNetworkForm()
-        {
-            Network nwForm = new Network(this);
-            LoadFormIntoPanel(nwForm);
-        }
-
-        private void LoadFinalizingForm()
-        {
-            Finalizing finalForm = new Finalizing(this);
-            LoadFormIntoPanel(finalForm);
-        }
-
-        private void nextButton_Click(object sender, EventArgs e)
-        {
-            if (mainPanel.Controls[0] is Start startForm)
-            {
-                startForm.MainBtnClick();
-                LoadPasswordForm();
-            }
-            else if (mainPanel.Controls[0] is Password pwForm)
-            {
-                pwForm.MainBtnClick();
-
-                buttonPanel.Visible = false;
-                nextButton.Visible = false;
-
-                LoadSecurityForm();
-            }
-            else if (mainPanel.Controls[0] is Security securityForm)
-            {
-                // Do nothing, security handles it.
-            }
-            else if (mainPanel.Controls[0] is TimeAndDate timeAndDateForm)
-            {
-                buttonPanel.Visible = false;
-                nextButton.Visible = false;
-
-                bool wifiConnected = false;
-                foreach (NetworkInterface ni in NetworkInterface.GetAllNetworkInterfaces())
-                {
-                    if (ni.NetworkInterfaceType == NetworkInterfaceType.Wireless80211 &&
-                        ni.OperationalStatus == OperationalStatus.Up)
+                    foreach (NetworkInterface ni in NetworkInterface.GetAllNetworkInterfaces()) 
                     {
-                        wifiConnected = true;
-                        break;
+                        if (ni.NetworkInterfaceType == NetworkInterfaceType.Wireless80211 && ni.OperationalStatus == OperationalStatus.Up) 
+                        {
+                            wifiConnected = true;
+                            break;
+                        }
                     }
-                }
 
-                if (wifiConnected)
-                {
-                    LoadNetworkForm();
-                }
-                else
-                {
-                    LoadFinalizingForm();       
-                }
-            }
-            else if (mainPanel.Controls[0] is Network nwForm)
-            {
-                // Do nothing, network handles it.
+                    LoadPage(wifiConnected ? EOobePage.Network : EOobePage.Finalizing);
+                    break;
+                case EOobePage.Network:
+                    break;
             }
         }
     }

@@ -5,12 +5,15 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using WindowsOOBERecreation.Enums;
+using WindowsOOBERecreation.Interfaces;
 
 namespace WindowsOOBERecreation
 {
-    public partial class ProductKey : Form
+    public partial class ProductKey : Form, IOobePage
     {
         private Main _mainForm;
+        public EOobePage Page => EOobePage.ProductKey;
 
         public ProductKey(Main mainForm)
         {

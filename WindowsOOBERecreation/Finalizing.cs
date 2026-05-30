@@ -3,13 +3,17 @@ using System;
 using System.Management;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsOOBERecreation.Enums;
+using WindowsOOBERecreation.Interfaces;
 
 namespace WindowsOOBERecreation
 {
-    public partial class Finalizing : Form
+    public partial class Finalizing : Form, IOobePage
     {
         private Main _mainForm;
         private int _spacePressCount = 0;
+
+        public EOobePage Page => EOobePage.Finalizing;
 
         public Finalizing(Main mainForm)
         {

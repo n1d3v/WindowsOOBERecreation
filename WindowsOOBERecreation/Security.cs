@@ -2,12 +2,16 @@
 using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
+using WindowsOOBERecreation.Enums;
+using WindowsOOBERecreation.Interfaces;
 
 namespace WindowsOOBERecreation
 {
-    public partial class Security : Form
+    public partial class Security : Form, IOobePage 
     {
         private Main _mainForm;
+
+        public EOobePage Page => EOobePage.Security;
 
         public Security(Main mainForm)
         {

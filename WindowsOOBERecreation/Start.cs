@@ -4,10 +4,12 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using TheArtOfDev.HtmlRenderer.WinForms;
+using WindowsOOBERecreation.Enums;
+using WindowsOOBERecreation.Interfaces;
 
 namespace WindowsOOBERecreation
 {
-    public partial class Start : Form
+    public partial class Start : Form, IOobePage
     {
         private Main _mainForm;
         public string Username { get; private set; }
@@ -15,6 +17,8 @@ namespace WindowsOOBERecreation
 
         public bool PCNameModified = false;
         private bool _updatingComputerName = false;
+
+        public EOobePage Page => EOobePage.Start;
 
         public Start(Main mainForm)
         {

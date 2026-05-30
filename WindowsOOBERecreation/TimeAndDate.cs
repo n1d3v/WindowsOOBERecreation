@@ -2,12 +2,16 @@
 using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
+using WindowsOOBERecreation.Enums;
+using WindowsOOBERecreation.Interfaces;
 
 namespace WindowsOOBERecreation
 {
-    public partial class TimeAndDate : Form
+    public partial class TimeAndDate : Form, IOobePage
     {
         private Main _mainForm;
+
+        public EOobePage Page => EOobePage.TimeAndDate;
 
         public TimeAndDate(Main mainForm)
         {

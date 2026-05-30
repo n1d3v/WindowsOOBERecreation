@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Windows.Forms;
+using WindowsOOBERecreation.Enums;
+using WindowsOOBERecreation.Interfaces;
 
 namespace WindowsOOBERecreation
 {
-    public partial class Password : Form
+    public partial class Password : Form, IOobePage
     {
         private Main _mainForm;
         public string usernameString;
         public string computerNameString;
         public string passString;
         public string confirmPassString;
+
+        public EOobePage Page => EOobePage.Password;
 
         public Password(Main mainForm, string username, string computerName)
         {

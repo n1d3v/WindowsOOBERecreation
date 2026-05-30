@@ -3,12 +3,16 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
+using WindowsOOBERecreation.Interfaces;
+using WindowsOOBERecreation.Enums;
 
 namespace WindowsOOBERecreation
 {
-    public partial class Network : Form
+    public partial class Network : Form, IOobePage
     {
         private Main _mainForm;
+
+        public EOobePage Page => EOobePage.Network;
 
         public Network(Main mainForm)
         {

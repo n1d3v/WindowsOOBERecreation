@@ -366,6 +366,12 @@ namespace WindowsOOBERecreation
 
         private bool IsMouseOver(Control c) { return c.ClientRectangle.Contains(c.PointToClient(Cursor.Position)); }
         private void SetTime(DateTime dt) { clockBox.Text = FormatTime(dt); }
+
+        public void RefreshNow()
+        {
+            if (!_isEditing)
+                SetTime(DateTime.Now);
+        }
         #endregion
     }
 }

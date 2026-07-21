@@ -34,7 +34,8 @@
             this.iconPicBox = new System.Windows.Forms.PictureBox();
             this.titleLabel = new System.Windows.Forms.Label();
             this.displayPanel = new System.Windows.Forms.Panel();
-            this.buttonPanel = new System.Windows.Forms.Panel();
+            this.buttonPanel = new WindowsOOBERecreation.MainPanel();
+            this.skipButton = new System.Windows.Forms.Button();
             this.nextButton = new System.Windows.Forms.Button();
             this.basicPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.backButtonPic)).BeginInit();
@@ -80,7 +81,7 @@
             this.titleLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleLabel.Location = new System.Drawing.Point(57, 7);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(99, 14);
+            this.titleLabel.Size = new System.Drawing.Size(93, 15);
             this.titleLabel.TabIndex = 1;
             this.titleLabel.Text = "Set Up Windows";
             // 
@@ -95,19 +96,33 @@
             // buttonPanel
             // 
             this.buttonPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.buttonPanel.Controls.Add(this.skipButton);
             this.buttonPanel.Controls.Add(this.nextButton);
             this.buttonPanel.Location = new System.Drawing.Point(0, 426);
             this.buttonPanel.Name = "buttonPanel";
             this.buttonPanel.Size = new System.Drawing.Size(593, 40);
             this.buttonPanel.TabIndex = 10;
             // 
+            // skipButton
+            // 
+            this.skipButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.skipButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.skipButton.Location = new System.Drawing.Point(439, 8);
+            this.skipButton.Name = "skipButton";
+            this.skipButton.Size = new System.Drawing.Size(68, 23);
+            this.skipButton.TabIndex = 8;
+            this.skipButton.Text = "Skip";
+            this.skipButton.UseVisualStyleBackColor = true;
+            this.skipButton.Visible = false;
+            this.skipButton.Click += new System.EventHandler(this.skipButton_Click);
+            // 
             // nextButton
             // 
             this.nextButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.nextButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nextButton.Location = new System.Drawing.Point(514, 8);
+            this.nextButton.Location = new System.Drawing.Point(515, 8);
             this.nextButton.Name = "nextButton";
-            this.nextButton.Size = new System.Drawing.Size(69, 23);
+            this.nextButton.Size = new System.Drawing.Size(68, 23);
             this.nextButton.TabIndex = 7;
             this.nextButton.Text = "Next";
             this.nextButton.UseVisualStyleBackColor = true;
@@ -117,6 +132,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(593, 466);
             this.ControlBox = false;
             this.Controls.Add(this.buttonPanel);
@@ -145,7 +161,8 @@
         private System.Windows.Forms.Panel displayPanel;
         private System.Windows.Forms.PictureBox iconPicBox;
         public System.Windows.Forms.PictureBox backButtonPic;
-        public System.Windows.Forms.Panel buttonPanel;
+        public WindowsOOBERecreation.MainPanel buttonPanel;
         public System.Windows.Forms.Button nextButton;
+        public System.Windows.Forms.Button skipButton;
     }
 }

@@ -82,6 +82,9 @@ namespace WindowsOOBERecreation
                     throw new Exception(error);
                 }
             }
+
+            TimeZoneInfo.ClearCachedData();
+            timePicker.RefreshNow();
         }
     }
 }

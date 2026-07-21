@@ -44,7 +44,7 @@
             this.usernameLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.usernameLabel.Location = new System.Drawing.Point(167, 203);
             this.usernameLabel.Name = "usernameLabel";
-            this.usernameLabel.Size = new System.Drawing.Size(222, 14);
+            this.usernameLabel.Size = new System.Drawing.Size(206, 15);
             this.usernameLabel.TabIndex = 2;
             this.usernameLabel.Text = "Type a user name (for example, John):";
             // 
@@ -54,7 +54,7 @@
             this.usernameBox.Location = new System.Drawing.Point(168, 218);
             this.usernameBox.Name = "usernameBox";
             this.usernameBox.Size = new System.Drawing.Size(240, 23);
-            this.usernameBox.TabIndex = 3;
+            this.usernameBox.TabIndex = 0;
             // 
             // computerNameBox
             // 
@@ -62,7 +62,7 @@
             this.computerNameBox.Location = new System.Drawing.Point(168, 261);
             this.computerNameBox.Name = "computerNameBox";
             this.computerNameBox.Size = new System.Drawing.Size(240, 23);
-            this.computerNameBox.TabIndex = 5;
+            this.computerNameBox.TabIndex = 1;
             this.computerNameBox.Text = "PC";
             this.computerNameBox.TextChanged += new System.EventHandler(this.computerNameBox_TextChanged);
             // 
@@ -72,19 +72,20 @@
             this.copyrightLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.copyrightLabel.Location = new System.Drawing.Point(262, 408);
             this.copyrightLabel.Name = "copyrightLabel";
-            this.copyrightLabel.Size = new System.Drawing.Size(339, 14);
+            this.copyrightLabel.Size = new System.Drawing.Size(328, 15);
             this.copyrightLabel.TabIndex = 7;
             this.copyrightLabel.Text = "Copyright © 2009 Microsoft Corporation.  All rights reserved.";
             // 
             // EOAPic
             // 
+            this.EOAPic.Cursor = System.Windows.Forms.Cursors.Hand;
             this.EOAPic.Image = global::WindowsOOBERecreation.Properties.Resources.image;
             this.EOAPic.Location = new System.Drawing.Point(11, 397);
             this.EOAPic.Name = "EOAPic";
             this.EOAPic.Size = new System.Drawing.Size(24, 24);
             this.EOAPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.EOAPic.TabIndex = 8;
-            this.EOAPic.TabStop = false;
+            this.EOAPic.TabIndex = 2;
+            this.EOAPic.TabStop = true;
             this.EOAPic.Click += new System.EventHandler(this.EOAPic_Click);
             // 
             // windowsBrandingPic

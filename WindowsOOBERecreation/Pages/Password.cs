@@ -18,11 +18,18 @@ namespace WindowsOOBERecreation
             usernameString = username;
             computerNameString = computerName;
             this.AcceptButton = _mainForm.nextButton;
-            _mainForm.DisablePictureBox();
 
             passwordBox.TextChanged += ValidateInput;
             confirmPassBox.TextChanged += ValidateInput;
             passHintBox.TextChanged += ValidateInput;
+
+            passwordBox.AutoSize = false;
+            passwordBox.Height = 20;
+            confirmPassBox.AutoSize = false;
+            confirmPassBox.Height = 20;
+            passHintBox.AutoSize = false;
+            passHintBox.Height = 20;
+
             _mainForm.nextButton.Enabled = true;
         }
 

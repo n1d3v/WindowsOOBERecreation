@@ -45,36 +45,29 @@ namespace WindowsOOBERecreation
             CommandLink cmdLink = (CommandLink)sender;
             string tag = cmdLink.Tag.ToString();
 
-            string category = "Public";
+            NetworkLocation nwLocation;
 
             switch (tag)
             {
                 case "Home":
-                case "Work":
-                    category = "Private";
+                    nwLocation = NetworkLocation.Home;
                     break;
-                case "Public":
-                    category = "Public";
+                case "Work":
+                    nwLocation = NetworkLocation.Work;
+                    break;
+                default:
+                    nwLocation = NetworkLocation.Public;
                     break;
             }
 
-            SetNetworkCategory(category);
-
-            Finalizing finalizingForm = new Finalizing(_mainForm);
-            _mainForm.LoadFormIntoPanel(finalizingForm);
+            ApplyNetworkLocation(nwLocation);
+            _mainForm.LoadFinalizingForm();
         }
 
-        private void SetNetworkCategory(string category)
+        private void ApplyNetworkLocation(NetworkLocation nwLocation)
         {
-            ProcessStartInfo psi = new ProcessStartInfo
-            {
-                FileName = "powershell",
-                Arguments = $"Set-NetConnectionProfile -NetworkCategory {category}",
-                UseShellExecute = false,
-                CreateNoWindow = true
-            };
-
-            Process.Start(psi);
+            NetworkLocationManager.Apply(nwLocation);
+            if (NetworkLocationManager.LocationUsesHomeGroup(nwLocation)) { NetworkLocationManager.EnsureHomeGroup(); }
         }
     }
 }

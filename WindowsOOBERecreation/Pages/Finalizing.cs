@@ -15,7 +15,6 @@ namespace WindowsOOBERecreation
         {
             InitializeComponent();
             _mainForm = mainForm;
-            _mainForm.DisablePictureBox();
 
             _mainForm.KeyPreview = true;
             _mainForm.KeyDown += Finalizing_KeyDown;
@@ -55,14 +54,9 @@ namespace WindowsOOBERecreation
             string compNameStr = Properties.Settings.Default.compNameStg;
             string passHintStr = Properties.Settings.Default.passHintStg;
 
-            if (string.IsNullOrEmpty(passwordStr) && string.IsNullOrEmpty(confPassStr) && string.IsNullOrEmpty(passHintStr))
-            {
-                Helper.CreateUser(usernameStr, null, passHintStr);
-            }
-            else if (passwordStr == confPassStr)
-            {
-                Helper.CreateUser(usernameStr, passwordStr, passHintStr);
-            }
+            if (string.IsNullOrEmpty(passwordStr) && string.IsNullOrEmpty(confPassStr) && string.IsNullOrEmpty(passHintStr)) { CreateUser.CreateAcc(usernameStr, null, null); }
+            else if (passwordStr == confPassStr) { CreateUser.CreateAcc(usernameStr, passwordStr, passHintStr); }
+
             ChangeComputerName(compNameStr);
 
             string appDirectory = Application.StartupPath;
@@ -77,11 +71,6 @@ namespace WindowsOOBERecreation
                     SetRegistryValue(setupKey, "SetupType", 0, RegistryValueKind.DWord);
                     SetRegistryValue(setupKey, "SystemSetupInProgress", 0, RegistryValueKind.DWord);
                 }
-            }
-            // Apply the persons username to the RegisteredOwner value, which is what Windows did
-            using (RegistryKey curVerKey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion", true))
-            {
-                if (curVerKey != null) { SetRegistryValue(curVerKey, "RegisteredOwner", usernameStr, RegistryValueKind.String); }
             }
 
             Environment.Exit(0);

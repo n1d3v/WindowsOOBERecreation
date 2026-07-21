@@ -32,9 +32,9 @@ namespace WindowsOOBERecreation
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Security));
             this.titleLabel = new System.Windows.Forms.Label();
             this.securityPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.WIALabel = new System.Windows.Forms.LinkLabel();
+            this.undLabel = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.PSLabel = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -55,17 +55,19 @@ namespace WindowsOOBERecreation
             this.securityPanel.Size = new System.Drawing.Size(539, 186);
             this.securityPanel.TabIndex = 11;
             // 
-            // WIALabel
+            // undLabel
             // 
-            this.WIALabel.AutoSize = true;
-            this.WIALabel.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.WIALabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
-            this.WIALabel.Location = new System.Drawing.Point(35, 299);
-            this.WIALabel.Name = "WIALabel";
-            this.WIALabel.Size = new System.Drawing.Size(167, 15);
-            this.WIALabel.TabIndex = 25;
-            this.WIALabel.TabStop = true;
-            this.WIALabel.Text = "Learn more about each option";
+            this.undLabel.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.undLabel.AutoSize = true;
+            this.undLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.undLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.undLabel.Location = new System.Drawing.Point(35, 299);
+            this.undLabel.Name = "undLabel";
+            this.undLabel.Size = new System.Drawing.Size(167, 15);
+            this.undLabel.TabIndex = 25;
+            this.undLabel.TabStop = true;
+            this.undLabel.Text = "Learn more about each option";
+            this.undLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.undLabel_LinkClicked);
             // 
             // label1
             // 
@@ -77,17 +79,19 @@ namespace WindowsOOBERecreation
             this.label1.TabIndex = 26;
             this.label1.Text = resources.GetString("label1.Text");
             // 
-            // linkLabel1
+            // PSLabel
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.linkLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
-            this.linkLabel1.Location = new System.Drawing.Point(406, 348);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(150, 15);
-            this.linkLabel1.TabIndex = 27;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Read the privacy statement";
+            this.PSLabel.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.PSLabel.AutoSize = true;
+            this.PSLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.PSLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.PSLabel.Location = new System.Drawing.Point(406, 348);
+            this.PSLabel.Name = "PSLabel";
+            this.PSLabel.Size = new System.Drawing.Size(150, 15);
+            this.PSLabel.TabIndex = 27;
+            this.PSLabel.TabStop = true;
+            this.PSLabel.Text = "Read the privacy statement";
+            this.PSLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.PSLabel_LinkClicked);
             // 
             // Security
             // 
@@ -95,9 +99,9 @@ namespace WindowsOOBERecreation
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(593, 466);
-            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.PSLabel);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.WIALabel);
+            this.Controls.Add(this.undLabel);
             this.Controls.Add(this.securityPanel);
             this.Controls.Add(this.titleLabel);
             this.MaximizeBox = false;
@@ -113,8 +117,8 @@ namespace WindowsOOBERecreation
 
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.FlowLayoutPanel securityPanel;
-        private System.Windows.Forms.LinkLabel WIALabel;
+        private System.Windows.Forms.LinkLabel undLabel;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel PSLabel;
     }
 }

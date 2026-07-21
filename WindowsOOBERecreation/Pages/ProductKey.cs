@@ -15,7 +15,6 @@ namespace WindowsOOBERecreation
         public ProductKey(Main mainForm)
         {
             _mainForm = mainForm;
-            _mainForm.EnablePictureBox();
             this.AcceptButton = _mainForm.nextButton;
             InitializeComponent();
         }
@@ -53,6 +52,18 @@ namespace WindowsOOBERecreation
             {
                 _mainForm.backButtonPic.Image = Image.FromStream(ms);
             }
+        }
+
+        private void WIALabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            HelpForm helpForm = new HelpForm(Path.Combine(Application.StartupPath, @"Help Files\activationHelp.rtf"));
+            helpForm.ShowDialog();
+        }
+
+        private void PSLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            HelpForm helpForm = new HelpForm(Path.Combine(Application.StartupPath, @"Help Files\sevenPrivacyStatement.rtf"));
+            helpForm.ShowDialog();
         }
     }
 }

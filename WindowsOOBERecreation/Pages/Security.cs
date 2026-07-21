@@ -13,7 +13,6 @@ namespace WindowsOOBERecreation
         {
             InitializeComponent();
             _mainForm = mainForm;
-            _mainForm.EnablePictureBox();
 
             // I have FINALLY, after a few months figured out how to make command links with icons. This really adds color to the OOBE. 
             AddCommandLink(securityPanel, "Use recommended settings", "Install important and recommended updates, help make Internet browsing safer, check online for solutions to problems, and help Microsoft improve Windows.", new Icon(Path.Combine(Application.StartupPath, "Icons\\recommended.ico"), new Size(48, 48)), SetPrivacy_Handler, new Size(536, 72), "Recommended");
@@ -43,8 +42,6 @@ namespace WindowsOOBERecreation
 
         private void SetPrivacy_Handler(object sender, EventArgs e)
         {
-            _mainForm.buttonPanel.Visible = true;
-            _mainForm.nextButton.Visible = true;
             _mainForm.PageNumber++;
 
             CommandLink cmdLink = (CommandLink)sender;
@@ -53,10 +50,21 @@ namespace WindowsOOBERecreation
             switch (tag)
             {
                 default:
-                    TimeAndDate timeAndDateForm = new TimeAndDate(_mainForm);
-                    _mainForm.LoadFormIntoPanel(timeAndDateForm);
+                    _mainForm.NavigateTo(() => new TimeAndDate(_mainForm));
                     break;
             }
+        }
+
+        private void undLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            HelpForm helpForm = new HelpForm(Path.Combine(Application.StartupPath, @"Help Files\securityHelp.rtf"));
+            helpForm.ShowDialog();
+        }
+
+        private void PSLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            HelpForm helpForm = new HelpForm(Path.Combine(Application.StartupPath, @"Help Files\sevenPrivacyStatement.rtf"));
+            helpForm.ShowDialog();
         }
     }
 }

@@ -35,9 +35,9 @@
             this.DSTCheck = new System.Windows.Forms.CheckBox();
             this.dateLabel = new System.Windows.Forms.Label();
             this.timeLabel = new System.Windows.Forms.Label();
+            this.timePicker = new WindowsOOBERecreation.TimePicker();
             this.clockCont1 = new WindowsOOBERecreation.ClockCont();
             this.monthCalBox = new WindowsOOBERecreation.MonthCal();
-            this.timePicker = new WindowsOOBERecreation.TimePicker();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -59,8 +59,8 @@
             this.tzCombo.FormattingEnabled = true;
             this.tzCombo.Location = new System.Drawing.Point(38, 116);
             this.tzCombo.Name = "tzCombo";
-            this.tzCombo.Size = new System.Drawing.Size(328, 23);
-            this.tzCombo.TabIndex = 10;
+            this.tzCombo.Size = new System.Drawing.Size(376, 23);
+            this.tzCombo.TabIndex = 0;
             // 
             // tzLabel
             // 
@@ -82,7 +82,7 @@
             this.DSTCheck.Location = new System.Drawing.Point(38, 146);
             this.DSTCheck.Name = "DSTCheck";
             this.DSTCheck.Size = new System.Drawing.Size(304, 20);
-            this.DSTCheck.TabIndex = 12;
+            this.DSTCheck.TabIndex = 1;
             this.DSTCheck.Text = "Automatically adjust clock for Daylight Saving Time";
             this.DSTCheck.UseVisualStyleBackColor = true;
             // 
@@ -106,22 +106,6 @@
             this.timeLabel.TabIndex = 15;
             this.timeLabel.Text = "Time:";
             // 
-            // clockCont1
-            // 
-            this.clockCont1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("clockCont1.BackgroundImage")));
-            this.clockCont1.Location = new System.Drawing.Point(256, 209);
-            this.clockCont1.Name = "clockCont1";
-            this.clockCont1.Size = new System.Drawing.Size(130, 130);
-            this.clockCont1.TabIndex = 19;
-            // 
-            // monthCalBox
-            // 
-            this.monthCalBox.Location = new System.Drawing.Point(38, 209);
-            this.monthCalBox.Margin = new System.Windows.Forms.Padding(0);
-            this.monthCalBox.Name = "monthCalBox";
-            this.monthCalBox.Size = new System.Drawing.Size(170, 137);
-            this.monthCalBox.TabIndex = 18;
-            // 
             // timePicker
             // 
             this.timePicker.BackColor = System.Drawing.Color.Transparent;
@@ -129,7 +113,23 @@
             this.timePicker.Margin = new System.Windows.Forms.Padding(0);
             this.timePicker.Name = "timePicker";
             this.timePicker.Size = new System.Drawing.Size(89, 21);
-            this.timePicker.TabIndex = 20;
+            this.timePicker.TabIndex = 4;
+            // 
+            // clockCont1
+            // 
+            this.clockCont1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("clockCont1.BackgroundImage")));
+            this.clockCont1.Location = new System.Drawing.Point(256, 209);
+            this.clockCont1.Name = "clockCont1";
+            this.clockCont1.Size = new System.Drawing.Size(130, 130);
+            this.clockCont1.TabIndex = 3;
+            // 
+            // monthCalBox
+            // 
+            this.monthCalBox.Location = new System.Drawing.Point(38, 209);
+            this.monthCalBox.Margin = new System.Windows.Forms.Padding(0);
+            this.monthCalBox.Name = "monthCalBox";
+            this.monthCalBox.Size = new System.Drawing.Size(170, 137);
+            this.monthCalBox.TabIndex = 2;
             // 
             // TimeAndDate
             // 

@@ -44,9 +44,9 @@
             this.titleLabel.AutoSize = true;
             this.titleLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.titleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(153)))));
-            this.titleLabel.Location = new System.Drawing.Point(34, 50);
+            this.titleLabel.Location = new System.Drawing.Point(34, 51);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(237, 19);
+            this.titleLabel.Size = new System.Drawing.Size(233, 21);
             this.titleLabel.TabIndex = 8;
             this.titleLabel.Text = "Set a password for your account";
             // 
@@ -54,9 +54,9 @@
             // 
             this.descriptionLabel.AutoSize = true;
             this.descriptionLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.descriptionLabel.Location = new System.Drawing.Point(37, 90);
+            this.descriptionLabel.Location = new System.Drawing.Point(37, 91);
             this.descriptionLabel.Name = "descriptionLabel";
-            this.descriptionLabel.Size = new System.Drawing.Size(516, 28);
+            this.descriptionLabel.Size = new System.Drawing.Size(494, 30);
             this.descriptionLabel.TabIndex = 9;
             this.descriptionLabel.Text = "Creating a password is a smart security precaution that helps protect your user a" +
     "ccount from\r\nunwanted users. Be sure to remember your password or keep it in a s" +
@@ -65,56 +65,56 @@
             // confirmPassBox
             // 
             this.confirmPassBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.confirmPassBox.Location = new System.Drawing.Point(38, 209);
+            this.confirmPassBox.Location = new System.Drawing.Point(38, 210);
             this.confirmPassBox.Name = "confirmPassBox";
             this.confirmPassBox.Size = new System.Drawing.Size(240, 23);
-            this.confirmPassBox.TabIndex = 13;
+            this.confirmPassBox.TabIndex = 1;
             this.confirmPassBox.UseSystemPasswordChar = true;
             // 
             // retypeLabel
             // 
             this.retypeLabel.AutoSize = true;
             this.retypeLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.retypeLabel.Location = new System.Drawing.Point(37, 189);
+            this.retypeLabel.Location = new System.Drawing.Point(37, 190);
             this.retypeLabel.Name = "retypeLabel";
-            this.retypeLabel.Size = new System.Drawing.Size(133, 14);
+            this.retypeLabel.Size = new System.Drawing.Size(126, 15);
             this.retypeLabel.TabIndex = 12;
             this.retypeLabel.Text = "Retype your password:";
             // 
             // passwordBox
             // 
             this.passwordBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordBox.Location = new System.Drawing.Point(38, 160);
+            this.passwordBox.Location = new System.Drawing.Point(38, 161);
             this.passwordBox.Name = "passwordBox";
             this.passwordBox.Size = new System.Drawing.Size(240, 23);
-            this.passwordBox.TabIndex = 11;
+            this.passwordBox.TabIndex = 0;
             this.passwordBox.UseSystemPasswordChar = true;
             // 
             // passwordLabel
             // 
             this.passwordLabel.AutoSize = true;
             this.passwordLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordLabel.Location = new System.Drawing.Point(37, 140);
+            this.passwordLabel.Location = new System.Drawing.Point(37, 141);
             this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(197, 14);
+            this.passwordLabel.Size = new System.Drawing.Size(185, 15);
             this.passwordLabel.TabIndex = 10;
             this.passwordLabel.Text = "Type a password (recommended):";
             // 
             // passHintBox
             // 
             this.passHintBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passHintBox.Location = new System.Drawing.Point(38, 258);
+            this.passHintBox.Location = new System.Drawing.Point(38, 259);
             this.passHintBox.Name = "passHintBox";
             this.passHintBox.Size = new System.Drawing.Size(240, 23);
-            this.passHintBox.TabIndex = 15;
+            this.passHintBox.TabIndex = 2;
             // 
             // hintLabel
             // 
             this.hintLabel.AutoSize = true;
             this.hintLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hintLabel.Location = new System.Drawing.Point(37, 238);
+            this.hintLabel.Location = new System.Drawing.Point(37, 239);
             this.hintLabel.Name = "hintLabel";
-            this.hintLabel.Size = new System.Drawing.Size(129, 14);
+            this.hintLabel.Size = new System.Drawing.Size(120, 15);
             this.hintLabel.TabIndex = 14;
             this.hintLabel.Text = "Type a password hint:";
             // 
@@ -122,9 +122,9 @@
             // 
             this.securityLabel.AutoSize = true;
             this.securityLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.securityLabel.Location = new System.Drawing.Point(37, 289);
+            this.securityLabel.Location = new System.Drawing.Point(37, 290);
             this.securityLabel.Name = "securityLabel";
-            this.securityLabel.Size = new System.Drawing.Size(374, 28);
+            this.securityLabel.Size = new System.Drawing.Size(357, 30);
             this.securityLabel.TabIndex = 16;
             this.securityLabel.Text = "Choose a word or phrase that helps you remember your password.\r\nIf you forget you" +
     "r password, Windows will show you your hint.\r\n";
